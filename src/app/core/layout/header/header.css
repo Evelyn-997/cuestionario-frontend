@@ -1,0 +1,23 @@
+.corporate-header {
+  background: #124f7d;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .brand-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+}

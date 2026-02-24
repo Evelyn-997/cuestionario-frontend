@@ -1,0 +1,18 @@
+.corporate-footer {
+  background:#124f7d;
+  color: white;
+  padding: 1rem 2rem;
+  margin-top: auto;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  a {
+    color: #00c2ff;
+    margin-left: 15px;
+    text-decoration: none;
+  }
+}

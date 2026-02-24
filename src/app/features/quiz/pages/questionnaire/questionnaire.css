@@ -1,0 +1,76 @@
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+.description {
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.progress-wrapper {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #3f51b5;
+  transition: width 0.3s ease;
+}
+
+.question-card {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.options {
+  margin-top: 16px;
+}
+
+.option {
+  display: block;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.buttons {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #124f7d;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-bottom: 12px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+}

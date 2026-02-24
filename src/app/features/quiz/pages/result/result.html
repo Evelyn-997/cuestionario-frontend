@@ -1,0 +1,57 @@
+<div class="container" *ngIf="result() as result;">
+
+  <h2>Tu resultado</h2>
+
+  <div class="dominant">
+    Estilo predominante:
+    <span [style.color]="getColor(result.dominantStyle)">
+      {{ getLabel(result.dominantStyle) }}
+    </span>
+  </div>
+
+  <!-- Barras -->
+  <div class="bars">
+    <div
+      class="bar-wrapper"
+      *ngFor="let entry of result.percentages | keyvalue"
+    >
+      <div class="bar-label">
+        {{ getLabel(entry.key) }} — {{ entry.value }}%
+      </div>
+
+      <div class="bar-background">
+        <div
+          class="bar-fill"
+          [style.width.%]="entry.value"
+          [style.background]="getColor(entry.key)"
+        ></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info Blocks -->
+  <div class="info-blocks">
+    <div *ngFor="let block of result.infoBlocks" class="info">
+      <h4>{{ block.title }}</h4>
+      <p>{{ block.text }}</p>
+    </div>
+  </div>
+
+  <!-- Acciones -->
+  <div class="actions">
+    <!-- boton opcional para descargar PDF o volver a hacer el test -->
+  <button class="btn primary" (click)="downloadPdf()">
+    Descargar PDF
+  </button>
+  <button class="btn ghost" (click)="goHome()">
+    Volver a hacer el test
+  </button>
+
+</div>
+
+<ng-template #noResult>
+  <div class="container">
+    <p>No hay resultado disponible.</p>
+  </div>
+</ng-template>

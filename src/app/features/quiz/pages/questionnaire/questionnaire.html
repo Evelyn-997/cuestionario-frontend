@@ -1,0 +1,88 @@
+
+<div *ngIf="loading()">Cargando…</div>
+<div *ngIf="!loading() && error()">{{ error() }}</div>
+
+<div class="container" *ngIf="!loading(); else loadingTpl">
+  <!-- Quiz cargado -->
+  <ng-container *ngIf="quiz() as quiz">
+
+    <h2>{{ quiz.title }}</h2>
+    <p class="description">{{ quiz.description }}</p>
+
+    <!-- Progress -->
+    <div class="progress-wrapper">
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          [style.width.%]="progress()"
+        ></div>
+      </div>
+      <span>{{ currentIndex() + 1 }} / {{ total() }}</span>
+    </div>
+
+    <!-- Question -->
+    <div *ngIf="currentQuestion() as question" class="question-card">
+
+      <h3>
+        {{ currentIndex() + 1 }}. {{ question.text }}
+      </h3>
+
+      <div class="options">
+        <label
+          *ngFor="let opt of question.options"
+          class="option"
+        >
+          <input
+            type="radio"
+            [name]="'q' + question.questionId"
+            [value]="opt.optionId"
+            [checked]="selectedOptionId(opt.optionId)"
+            (change)="selectOption(opt.optionId)"
+          />
+          {{ opt.text }}
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="buttons">
+
+      <button
+        (click)="prev()"
+        [disabled]="!canGoPrev()"
+        type="button"
+      >
+        Anterior
+      </button>
+
+      <!-- Si NO es última -->
+      <button
+        *ngIf="!isLast()"
+        (click)="next()"
+        [disabled]="!canGoNext()"
+        type="button"
+      >
+        Siguiente
+      </button>
+
+      <!-- Si es última -->
+      <button
+        *ngIf="isLast()"
+        (click)="submit()"
+        [disabled]="submitting() || !canGoNext()"
+        type="button"
+      >
+        {{ submitting() ? 'Enviando...' : 'Finalizar' }}
+      </button>
+
+    </div>
+
+  </ng-container>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading">
+    Cargando cuestionario...
+  </div>
+</ng-template>
